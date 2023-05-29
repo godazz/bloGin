@@ -1,6 +1,3 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
@@ -43,7 +40,7 @@ func serve() {
 func setConfig() config.Config {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("config") // path to look for the config file in
+	viper.AddConfigPath("config")
 
 	if err := viper.ReadInConfig(); err != nil {
 		fmt.Println("Error reading the config")
