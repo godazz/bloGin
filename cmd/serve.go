@@ -1,13 +1,8 @@
 package cmd
 
 import (
-	"fmt"
-	"net/http"
-
-	"github.com/gin-gonic/gin"
-	"github.com/godazz/bloGin/pkg/config"
+	"github.com/godazz/bloGin/pkg/bootstrap"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 )
 
 // serveCmd represents the serve command
@@ -25,16 +20,5 @@ func init() {
 }
 
 func serve() {
-	config.Set()
-
-	configs := config.Get()
-
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message":  "pong",
-			"app name": viper.Get("App.Name"),
-		})
-	})
-	r.Run(fmt.Sprintf("%s:%s", configs.Server.Host, configs.Server.Port))
+	bootstrap.Serve()
 }
