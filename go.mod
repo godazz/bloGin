@@ -1,4 +1,4 @@
-module github.com/godazz/goGin
+module github.com/godazz/bloGin
 
 go 1.20
 

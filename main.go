@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/godazz/goGin/cmd"
+	"github.com/godazz/bloGin/cmd"
 )
 
 func main() {
