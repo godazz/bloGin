@@ -2,6 +2,7 @@ package bootstrap
 
 import (
 	"github.com/godazz/bloGin/pkg/config"
+	"github.com/godazz/bloGin/pkg/db"
 	"github.com/godazz/bloGin/pkg/html"
 	"github.com/godazz/bloGin/pkg/routing"
 	"github.com/godazz/bloGin/pkg/static"
@@ -9,6 +10,8 @@ import (
 
 func Serve() {
 	config.Set()
+
+	db.Connect()
 
 	routing.Init()
 
