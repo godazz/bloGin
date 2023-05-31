@@ -1,17 +1,12 @@
 package routes
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
-	"github.com/godazz/bloGin/pkg/html"
+	"github.com/godazz/bloGin/internal/modules/home/controllers"
 )
 
 func Routes(router *gin.Engine) {
 
-	router.GET("/", func(c *gin.Context) {
-		html.Render(c, http.StatusOK, "modules/home/html/home", gin.H{
-			"title": "Home Page",
-		})
-	})
+	homeController := controllers.New()
+	router.GET("/", homeController.Index)
 }
