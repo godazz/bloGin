@@ -14,10 +14,4 @@ func Routes(router *gin.Engine) {
 			"title": "Home Page",
 		})
 	})
-
-	router.GET("/about", func(c *gin.Context) {
-		html.Render(c, http.StatusOK, "modules/home/html/about", gin.H{
-			"title": "About Page",
-		})
-	})
 }
