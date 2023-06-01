@@ -4,18 +4,26 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/godazz/bloGin/pkg/html"
+	ArticleService "github.com/godazz/bloGin/internal/modules/article/services"
 )
 
 type Controller struct {
+	articleService ArticleService.ArticleServiceInterface
 }
 
 func New() *Controller {
-	return &Controller{}
+	return &Controller{
+		articleService: ArticleService.New(),
+	}
 }
 
 func (controller *Controller) Index(c *gin.Context) {
-	html.Render(c, http.StatusOK, "modules/home/html/home", gin.H{
-		"title": "Home Page",
+	//html.Render(c, http.StatusOK, "modules/home/html/home", gin.H{
+	//	"title": "Home Page",
+	//})
+
+	c.JSON(http.StatusOK, gin.H{
+		"featured": controller.articleService.GetFeaturedArticles(),
+		"stories":  controller.articleService.GetStoriesArticles(),
 	})
 }
