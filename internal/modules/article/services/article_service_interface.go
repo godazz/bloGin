@@ -1,8 +1,10 @@
 package services
 
-import articleModel "github.com/godazz/bloGin/internal/modules/article/models"
+import (
+	articleResponse "github.com/godazz/bloGin/internal/modules/article/responses"
+)
 
 type ArticleServiceInterface interface {
-	GetFeaturedArticles() []articleModel.Article
-	GetStoriesArticles() []articleModel.Article
+	GetFeaturedArticles() articleResponse.Articles
+	GetStoriesArticles() articleResponse.Articles
 }

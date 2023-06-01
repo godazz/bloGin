@@ -1,8 +1,8 @@
 package services
 
 import (
-	articleModel "github.com/godazz/bloGin/internal/modules/article/models"
 	articleRepository "github.com/godazz/bloGin/internal/modules/article/repositories"
+	articleResponse "github.com/godazz/bloGin/internal/modules/article/responses"
 )
 
 type ArticleService struct {
@@ -15,10 +15,12 @@ func New() *ArticleService {
 	}
 }
 
-func (articleService ArticleService) GetFeaturedArticles() []articleModel.Article {
-	return articleService.articleRepository.List(4)
+func (articleService ArticleService) GetFeaturedArticles() articleResponse.Articles {
+	articles := articleService.articleRepository.List(4)
+	return articleResponse.ToArticles(articles)
 }
 
-func (articleService ArticleService) GetStoriesArticles() []articleModel.Article {
-	return articleService.articleRepository.List(6)
+func (articleService ArticleService) GetStoriesArticles() articleResponse.Articles {
+	articles := articleService.articleRepository.List(6)
+	return articleResponse.ToArticles(articles)
 }
